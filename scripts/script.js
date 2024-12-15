@@ -10,11 +10,11 @@ const run = async () => {
     video.srcObject = stream;
 
     await Promise.all([
-        faceapi.nets.ssdMobilenetv1.loadFromUri('../models'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('../models'),
-        faceapi.nets.faceRecognitionNet.loadFromUri('../models'),
-        faceapi.nets.ageGenderNet.loadFromUri('../models'),
-        faceapi.nets.faceExpressionNet.loadFromUri('../models'),
+        faceapi.nets.ssdMobilenetv1.loadFromUri('../FaceRecognization/models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('../FaceRecognization/models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('../FaceRecognization/models'),
+        faceapi.nets.ageGenderNet.loadFromUri('../FaceRecognization/models'),
+        faceapi.nets.faceExpressionNet.loadFromUri('../FaceRecognization/models'),
 
     ]);
 
@@ -25,7 +25,7 @@ const run = async () => {
     canvas.width = video.width;
 
     // add reference image
-    let refImg = '../ActualImages/jayraj.jpg';
+    let refImg = '../FaceRecognization/ActualImages/jayraj.jpg';
     const refImage = await faceapi.fetchImage(refImg);
     // const refImage = await faceapi.detectAllFaces(refImg).withFaceLandmarks().withFaceDescriptors();
     if (!refImage.length) {
